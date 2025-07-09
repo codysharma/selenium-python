@@ -7,6 +7,17 @@ from selenium.webdriver.common.by import By
 
 class TestPositiveScenarios:
 
+    @pytest.mark.positive
+    def test_page_load(self):
+        driver = webdriver.Chrome()
+
+        # navigate to webpage
+        driver.get("https://practicetestautomation.com/practice-test-login/")
+        actual_url = driver.current_url
+        assert actual_url == "https://practicetestautomation.com/practice-test-login/", "Page did not load correctly"
+
+        driver.quit()
+
     # these marks mean the test will run if either mark is run
     @pytest.mark.login 
     @pytest.mark.positive
@@ -45,4 +56,7 @@ class TestPositiveScenarios:
         # Verify button Log out is displayed on the new page
         logout_button_locator = driver.find_element(By.LINK_TEXT, "Log out")
         assert logout_button_locator.is_displayed()
+
+        driver.quit()
+
 
