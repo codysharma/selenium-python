@@ -3,32 +3,33 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-# open browser
+# pytest fixture is a function that runs before each test. If in the same folder as conftest.py, will auto import.
 
 class TestPositiveScenarios:
 
     @pytest.mark.positive
-    def test_page_load(self):
-        driver = webdriver.Chrome()
+    @pytest.mark.login
+    def test_page_load(self, driver):
+        # driver = webdriver.Chrome()
 
         # navigate to webpage
-        driver.get("https://practicetestautomation.com/practice-test-login/")
+        # driver.get("https://practicetestautomation.com/practice-test-login/")
         actual_url = driver.current_url
         assert actual_url == "https://practicetestautomation.com/practice-test-login/", "Page did not load correctly"
 
-        driver.quit()
+        # driver.quit()
 
-    # these marks mean the test will run if either mark is run
+    # these marks mean the test will run if either mark is run based on pytest.ini
     @pytest.mark.login 
     @pytest.mark.positive
-    def test_positive_login(self):
+    def test_positive_login(self, driver):
 
-        driver = webdriver.Chrome()
-        time.sleep(2)
+        # driver = webdriver.Chrome()
+        # time.sleep(2)
 
         # navigate to webpage
-        driver.get("https://practicetestautomation.com/practice-test-login/")
-        time.sleep(2)
+        # driver.get("https://practicetestautomation.com/practice-test-login/")
+        # time.sleep(2)
 
         # Type username student into Username field
         username_locator = driver.find_element(By.ID, "username")
@@ -57,6 +58,6 @@ class TestPositiveScenarios:
         logout_button_locator = driver.find_element(By.LINK_TEXT, "Log out")
         assert logout_button_locator.is_displayed()
 
-        driver.quit()
+        # driver.quit()
 
 
