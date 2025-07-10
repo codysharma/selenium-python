@@ -2,5 +2,10 @@ pytest==8.4.1
 selenium==4.34.1
 webdriver-manager==3.8.5
 requests==2.31.0
+# generates HTML reports
 pytest-html==3.2.0
+# allows you to run tests in parallel. In "pytest.ini", add "n=auto" to run tests in parallel
+pytest-xdist==3.3.1
+
+
 # pytest-cov==4.1.0
