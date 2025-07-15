@@ -24,7 +24,7 @@ def driver(request):
         raise TypeError(f"Expected chrome or firefox, but got {browser} instead.")
     
     my_driver.get("https://practicetestautomation.com/practice-test-login/")
-    my_driver.implicitly_wait(10)
+    # my_driver.implicitly_wait(10)
     yield my_driver
     # yield means this executes before the tests. Everything after, runs after the test
 

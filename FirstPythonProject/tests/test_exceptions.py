@@ -7,20 +7,19 @@ from selenium.webdriver.support import expected_conditions as ec
 
 class TestExceptions:
 
-    @pytest.mark.exceptions
+    # @pytest.mark.exceptions
     def test_no_such_element_exception(self, driver):
         driver.get("https://practicetestautomation.com/practice-test-exceptions/")
 
         add_button_locator = driver.find_element(By.ID, "add_btn") 
         add_button_locator.click()
 
-        confirmation_locator = WebDriverWait(driver, 10).until(
-              ec.presence_of_element_located((By.XPATH, "/html/body/div/div/section/section/div/div[3]/div/input"))
-        )
-        # confirmation_locator = driver.find_element(By.XPATH, "/html/body/div/div/section/section/div/div[3]/div/input")
-        assert confirmation_locator.is_displayed(), "Confirmation message not displayed"
+        wait = WebDriverWait(driver, 10)
+        confirmation_row2_element = wait.until(ec.presence_of_element_located((By.XPATH, "/html/body/div/div/section/section/div/div[3]/div/input")))
 
-    @pytest.mark.exceptions
+        assert confirmation_row2_element.is_displayed(), "Confirmation message not displayed"
+
+    # @pytest.mark.exceptions
     def test_element_not_interactable_exception(self, driver):
         driver.get("https://practicetestautomation.com/practice-test-exceptions/")
 
@@ -32,16 +31,15 @@ class TestExceptions:
         )
         second_row_input.send_keys("Test")
 
-        save_button_locator = driver.find_element(By.XPATH, "/html/body/div/div/section/section/div/div[3]/div/button[1]")
-        save_button_locator.click()
+        driver.find_element(By.XPATH, "/html/body/div/div/section/section/div/div[3]/div/button[1]").click()
 
         confirmation_locator = WebDriverWait(driver, 10).until(
-            ec.presence_of_element_located((By.XPATH, "/html/body/div/div/section/section/div/div[4]"))
+            ec.visibility_of_element_located((By.ID, "confirmation"))
         )
 
-        assert confirmation_locator.is_displayed(), "Confirmation message not displayed"
+        assert confirmation_locator.text == "Row 2 was saved", "Confirmation message not displayed"
 
-    @pytest.mark.exceptions
+    # @pytest.mark.exceptions
     def test_invalid_element_state_exception(self, driver):
         driver.get("https://practicetestautomation.com/practice-test-exceptions/")
 
@@ -51,19 +49,32 @@ class TestExceptions:
         input_field_locator = driver.find_element(By.XPATH, "/html/body/div/div/section/section/div/div[1]/div/input")
         input_field_locator.clear()
         input_field_locator.send_keys("Test")
+        new_text = input_field_locator.get_attribute("value")
+        assert new_text == "Test", "Input field did not update correctly after typing"
 
         save_button_locator = driver.find_element(By.XPATH, "/html/body/div/div/section/section/div/div[1]/div/button[2]")
         save_button_locator.click()
 
         # get_attribute("value") pulls the value of the input field unlike .text
         new_text = input_field_locator.get_attribute("value")
-        assert new_text == "Test", "Input field did not update correctly"
+        assert new_text == "Test", "Input field did not update correctly after saving"
 
     @pytest.mark.exceptions
+    def test_stale_element_reference_exception(self, driver):
+        driver.get("https://practicetestautomation.com/practice-test-exceptions/")
+
+        driver.find_element(By.ID, "add_btn").click() 
+        
+        instructions_locator = WebDriverWait(driver, 10).until(
+            ec.invisibility_of_element_located((By.ID, "instructions"))
+        )
+        assert instructions_locator, "Instructions should not be displayed after adding a new row"
+
+    # @pytest.mark.exceptions
     def test_timeout_exception(self, driver):
         driver.get("https://practicetestautomation.com/practice-test-exceptions/")
 
-        WebDriverWait(driver, 2).until(
+        WebDriverWait(driver, .01).until(
             ec.invisibility_of_element_located((By.XPATH, "/html/body/div/div/section/section/div/div[3]/div/input"))
         )
 
@@ -71,7 +82,7 @@ class TestExceptions:
         add_button_locator.click()
 
         # Wait for the new input field to appear
-        new_input_locator = webdriver.support.ui.WebDriverWait(driver, 3).until(
+        new_input_locator = WebDriverWait(driver, 5).until(
             ec.visibility_of_element_located((By.XPATH, "/html/body/div/div/section/section/div/div[3]/div/input"))
         )
         assert new_input_locator.is_displayed(), "New input field did not appear in time"
