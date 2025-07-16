@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as ec
 
 class TestExceptions:
 
-    # @pytest.mark.exceptions
+    @pytest.mark.exceptions
     def test_no_such_element_exception(self, driver):
         driver.get("https://practicetestautomation.com/practice-test-exceptions/")
 
@@ -19,7 +19,7 @@ class TestExceptions:
 
         assert confirmation_row2_element.is_displayed(), "Confirmation message not displayed"
 
-    # @pytest.mark.exceptions
+    @pytest.mark.exceptions
     def test_element_not_interactable_exception(self, driver):
         driver.get("https://practicetestautomation.com/practice-test-exceptions/")
 
@@ -39,7 +39,7 @@ class TestExceptions:
 
         assert confirmation_locator.text == "Row 2 was saved", "Confirmation message not displayed"
 
-    # @pytest.mark.exceptions
+    @pytest.mark.exceptions
     def test_invalid_element_state_exception(self, driver):
         driver.get("https://practicetestautomation.com/practice-test-exceptions/")
 
@@ -70,7 +70,7 @@ class TestExceptions:
         )
         assert instructions_locator, "Instructions should not be displayed after adding a new row"
 
-    # @pytest.mark.exceptions
+    @pytest.mark.exceptions
     def test_timeout_exception(self, driver):
         driver.get("https://practicetestautomation.com/practice-test-exceptions/")
 
