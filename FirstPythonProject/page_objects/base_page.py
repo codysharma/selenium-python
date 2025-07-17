@@ -43,7 +43,7 @@ class BasePage:
         except NoSuchElementException:
             return False
     
-    def open_url(self, url: str):
+    def _open_url(self, url: str):
         self._driver.get(url)
 
     

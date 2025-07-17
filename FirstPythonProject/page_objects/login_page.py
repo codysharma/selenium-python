@@ -19,8 +19,9 @@ class LoginPage(BasePage):
     # initial opening of the page
     def open(self):
         # self._driver.get(self.__url)
-        super().open_url(self.__url)
+        super()._open_url(self.__url)
 
+    # big method to do all login steps
     def execute_login(self, username: str, password: str):
         # username_locator = self._driver.find_element(self.__username_locator)
         # username_locator.send_keys(username)
