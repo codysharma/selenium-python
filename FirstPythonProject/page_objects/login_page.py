@@ -11,10 +11,19 @@ class LoginPage(BasePage):
     __username_locator = (By.ID, "username")
     __password_locator = (By.NAME, "password")
     __submit_button_locator = (By.XPATH, "/html/body/div/div/section/section/div[1]/button")
+    __error_message_locator = (By.ID, "error")
 
     def __init__(self, driver: WebDriver):
         # inherets init for driver from BasePage
         super().__init__(driver)
+
+    @property
+    def current_url(self) -> str:
+        return self._driver.current_url
+    
+    @property
+    def expected_url(self) -> str:
+        return self.__url
 
     # initial opening of the page
     def open(self):
@@ -43,3 +52,7 @@ class LoginPage(BasePage):
         super()._type(self.__username_locator, username)
         super()._type(self.__password_locator, password)
         super()._click(self.__submit_button_locator)
+
+    def get_error_message(self,) -> str:
+        return super()._get_text(self.__error_message_locator, time = 3)
+

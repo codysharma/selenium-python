@@ -19,13 +19,13 @@ class BasePage:
         self._wait_until_element_is_visible(locator, time)
         self._find(locator).send_keys(text)
 
-    def _click(self, locator: tuple, text: str, time: int = 10):
+    def _click(self, locator: tuple, time: int = 10):
         # calls the _wait method to ensure el is visible before clicking
         self._wait_until_element_is_visible(locator, time)
         self._find(locator).click()
 
     def _get_text(self, locator: tuple, time = 10) -> str:
-        self._wait_until_element_is_visibe(locator)
+        self._wait_until_element_is_visible(locator)
         # calls _find method to find element and return its text
         return self._find(locator).text
 

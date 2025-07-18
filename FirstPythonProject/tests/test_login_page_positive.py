@@ -13,12 +13,17 @@ class TestPositiveScenarios:
     @pytest.mark.positive
     @pytest.mark.login
     def test_page_load(self, driver):
+        login_page = LoginPage(driver)
+        login_page.open()
+        assert login_page.current_url == login_page.expected_url, "Page did not load correctly"
+
+        # ______________________
         # driver = webdriver.Chrome()
 
         # navigate to webpage
         # driver.get("https://practicetestautomation.com/practice-test-login/")
-        actual_url = driver.current_url
-        assert actual_url == "https://practicetestautomation.com/practice-test-login/", "Page did not load correctly"
+        # actual_url = driver.current_url
+        # assert actual_url == "https://practicetestautomation.com/practice-test-login/", "Page did not load correctly"
 
         # driver.quit()
 
