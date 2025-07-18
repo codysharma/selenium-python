@@ -19,8 +19,8 @@ from FirstPythonProject.page_objects.login_page import LoginPage
 
 class TestNegativeScenarios:
 
-    @pytest.mark.login
-    @pytest.mark.negative
+    # @pytest.mark.login
+    # @pytest.mark.negative
     @pytest.mark.parametrize("username, password, expected_error", [
         # each of the following parens contain data for relative tests, rendering them uncessary
         ("incorrectUser", "Password123", "Your username is invalid!"),

@@ -10,8 +10,8 @@ from FirstPythonProject.page_objects.login_page import LoginPage
 
 class TestPositiveScenarios:
 
-    @pytest.mark.positive
-    @pytest.mark.login
+    # @pytest.mark.positive
+    # @pytest.mark.login
     def test_page_load(self, driver):
         login_page = LoginPage(driver)
         login_page.open()
@@ -28,8 +28,8 @@ class TestPositiveScenarios:
         # driver.quit()
 
     # these marks mean the test will run if either mark is run based on pytest.ini
-    @pytest.mark.login 
-    @pytest.mark.positive
+    # @pytest.mark.login 
+    # @pytest.mark.positive
     def test_positive_login(self, driver):
         # makes instance of LoginPage class
         login_page = LoginPage(driver)
