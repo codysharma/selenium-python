@@ -1,0 +1,49 @@
+|____FirstPythonProject
+| |____.pytest_cache
+| | |____.gitignore
+| | |____CACHEDIR.TAG
+| | |____README.md
+| | |____v
+| | | |____cache
+| | | | |____lastfailed
+| | | | |____nodeids
+| | | | |____stepwise
+| |____main.py
+| |____page_objects
+| | |____base_page.py
+| | |____logged_in_successful.py
+| | |____login_page.py
+| | |______pycache__
+| | | |____base_page.cpython-312.pyc
+| | | |____logged_in_successful.cpython-312.pyc
+| | | |____login_page.cpython-312.pyc
+| |____readme.md
+| |____reports
+| | |____report.html
+| |____requirements.txt
+| |____tests
+| | |____.pytest_cache
+| | | |____.gitignore
+| | | |____CACHEDIR.TAG
+| | | |____README.md
+| | | |____v
+| | | | |____cache
+| | | | | |____lastfailed
+| | | | | |____nodeids
+| | | | | |____stepwise
+| | |____conftest.py
+| | |____test_exceptions.py
+| | |____test_login_page_negative.py
+| | |____test_login_page_positive.py
+| | |____test_math.py
+| | |______pycache__
+| | | |____conftest.cpython-312-pytest-8.4.1.pyc
+| | | |____test_exceptions.cpython-312-pytest-8.4.1.pyc
+| | | |____test_login_page.cpython-312-pytest-8.4.1.pyc
+| | | |____test_login_page_negative.cpython-312-pytest-8.4.1.pyc
+| | | |____test_login_page_positive.cpython-312-pytest-8.4.1.pyc
+| | | |____test_math.cpython-312-pytest-8.4.1.pyc
+| |______init__.py
+| |______pycache__
+| | |____test_math.cpython-312-pytest-8.4.1.pyc
+| | |______init__.cpython-312.pyc
